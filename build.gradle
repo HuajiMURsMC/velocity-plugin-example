@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    maven {
+        name = 'PaperMC'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly "com.velocitypowered:velocity-api:${project.velocity_version}"
+    annotationProcessor "com.velocitypowered:velocity-api:${project.velocity_version}"
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 17
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
